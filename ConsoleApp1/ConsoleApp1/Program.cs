@@ -17,6 +17,9 @@ namespace c0703625
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
+            p.ReadTextFile();
+            p.WordFind();
+            p.WordFind2();
             Console.ReadKey();
 
         }
@@ -44,8 +47,12 @@ namespace c0703625
                 file.Close();
                 counter = File.ReadLines("U:/Users/703625/hardeep/Beowulf.txt").Count();
                 Console.WriteLine($"File has {counter} lines.");
-
+               
             }
+        }
+        public void WordFind()
+        {
+
         }
 
         public int FindNumberOfBlankSpaces(string line)
