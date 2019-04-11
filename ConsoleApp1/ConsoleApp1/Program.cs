@@ -40,6 +40,7 @@ namespace c0703625
                 Console.WriteLine($"File has {counter} lines.");
             }
         }
+        public void ProcessArrayList()
 
         public int FindNumberOfBlankSpaces(string line)
         {
