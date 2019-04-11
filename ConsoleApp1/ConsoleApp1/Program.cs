@@ -17,49 +17,22 @@ namespace c0703625
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
-            // p.ReadTextFiles();
-            p.Run();
+            p.ReadTextFiles();
+            p.ReadTextFile();
+            p.Wordfind();
+            p.Wordfind2();
             Console.ReadKey();
+
 
         }
         public void Run()
         {
             this.ReadTextFile();
-            Console.WriteLine("xxxxx    number of words is {0} ", WalkOverArrayList());
-
         }
-
-        public int WalkOverArrayList()
-        {
-            int totalNumberOfWords = 0;
-            foreach (var thing in Beowulf)
-            {
-                totalNumberOfWords += CountWordsPerLine(thing.ToString());
-            }
-
-            return totalNumberOfWords;
-        }
-
-        public int CountWordsPerLine(string str)
-        {
-            int a = 0;
-            int numberOfWords = 0;
-            while (a <= str.Length - 1)
-            {
-                if (str[a] == ' ' || str[a] == '\n' || str[a] == '\t')
-                {
-                    numberOfWords++;
-                }
-                a++;
-            }
-
-            return numberOfWords;
-        }
-
         public void ReadTextFiles()
         {
-
-            using (StreamReader file = new StreamReader("U:/Users/696464/ravinder/Beowulf.txt"))
+            // Read file using StramReader. Read file line by line
+            using (StreamReader file = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt"))
             {
 
                 int counter = 0;
@@ -82,7 +55,7 @@ namespace c0703625
         public void ReadTextFile()
         {
 
-            StreamReader reader = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt");
+            var reader = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt");
             string script = reader.ReadToEnd();
 
             var text = script.Trim();
@@ -104,9 +77,50 @@ namespace c0703625
 
         }
 
+        public void Wordfind()
+
+        {
+            int chr = 0;
+            foreach (var line in File.ReadAllLines("U:/Users/703625/hardeep/Beowulf.txt"))
+            {
+                if (line.Contains("sea") && line.Contains("fare"))
+                {
+                    chr++;
+                }
+
+            }
+            Console.WriteLine("Total number of lines which contains word sea and Fare:" + chr);
+        }
+
+        public void Wordfind2()
+        {
+            int chr = 0, y = 0, z = 0;
+
+            foreach (var line in File.ReadAllLines("U:/Users/703625/hardeep/Beowulf.txt"))
+            {
+                if (line.Contains("fare"))
+                {
+                    chr++;
+                }
+
+            }
+            foreach (var line in File.ReadAllLines("U:/Users/703625/hardeep/Beowulf.txt"))
+            {
+                if (line.Contains("war") && line.Contains("fare"))
+                {
+                    y++;
+                }
+
+            }
+            z = chr - y;
+            Console.WriteLine("Total number of Lines which contain fare but not war: " + z);
+        }
+
 
         public int FindNumberOfBlankSpaces(string line)
         {
+
+
 
             int countletters = 0;
             int countSpaces = 0;
@@ -114,14 +128,23 @@ namespace c0703625
             foreach (char c in line)
             {
                 if (char.IsLetter(c))
-                { countletters++; }
+                {
+                    countletters++;
+                }
 
                 if (char.IsWhiteSpace(c))
-                { countletters++; }
+                {
+                    countletters++;
+                }
             }
             return countSpaces;
 
         }
+
+
+
+
+
 
     }
 
