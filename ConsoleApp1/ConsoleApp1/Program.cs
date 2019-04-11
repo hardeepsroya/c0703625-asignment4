@@ -52,9 +52,52 @@ namespace c0703625
         }
         public void WordFind()
         {
+            using (StreamReader file = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt"))
+            {
+
+                int counter = 0;
+                string ln;
+
+                while ((ln = file.ReadLine()) != null)
+                {
+
+                    Beowulf.Add(ln);
+
+                }
+
+                file.Close();
+                counter = File.ReadLines("U:/Users/703625/hardeep/Beowulf.txt").Count();
+                Console.WriteLine($"File has {counter} words.");
+
+            }
 
         }
 
+
+        public void ReadTextFile()
+        {
+
+            var reader = new StreamReader("U:/Users/703625/hardeep/beowulf.txt");
+            string script = reader.ReadToEnd();
+
+            var text = script.Trim();
+            int Count = 0, index = 0;
+
+            while (index < text.Length)
+            {
+
+                while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                    index++;
+
+                Count++;
+
+                while (index < text.Length && char.IsWhiteSpace(text[index]))
+                    index++;
+            }
+
+            Console.WriteLine("Total Number of Words are " + Count);
+
+        }
         public int FindNumberOfBlankSpaces(string line)
         {
 
