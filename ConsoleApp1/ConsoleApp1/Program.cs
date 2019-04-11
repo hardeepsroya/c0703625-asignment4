@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace c0703625
 {
@@ -17,9 +18,7 @@ namespace c0703625
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
-            p.ReadTextFile();
-            p.WordFind();
-            p.WordFind2();
+            p.Wordfind();
             Console.ReadKey();
 
         }
@@ -30,54 +29,8 @@ namespace c0703625
 
         public void ReadTextFiles()
         {
-            
-            using (StreamReader file = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt"))
-            {
 
-                int counter = 0;
-                string ln;
-
-                while ((ln = file.ReadLine()) != null)
-                {
-
-                    Beowulf.Add(ln);
-
-                }
-
-                file.Close();
-                counter = File.ReadLines("U:/Users/703625/hardeep/Beowulf.txt").Count();
-                Console.WriteLine($"File has {counter} lines.");
-               
-            }
-        }
-        public void WordFind()
-        {
-            using (StreamReader file = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt"))
-            {
-
-                int counter = 0;
-                string ln;
-
-                while ((ln = file.ReadLine()) != null)
-                {
-
-                    Beowulf.Add(ln);
-
-                }
-
-                file.Close();
-                counter = File.ReadLines("U:/Users/703625/hardeep/Beowulf.txt").Count();
-                Console.WriteLine($"File has {counter} words.");
-
-            }
-
-        }
-
-
-        public void ReadTextFile()
-        {
-
-            var reader = new StreamReader("U:/Users/703625/hardeep/beowulf.txt");
+            StreamReader reader = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt");
             string script = reader.ReadToEnd();
 
             var text = script.Trim();
@@ -98,21 +51,50 @@ namespace c0703625
             Console.WriteLine("Total Number of Words are " + Count);
 
         }
+        public void Wordfind()
+
+        {
+            int chr = 0;
+            foreach (var line in File.ReadAllLines("U:/Users/703625/hardeep/Beowulf.txt"))
+            {
+                if (line.Contains("sea") && line.Contains("fare"))
+                {
+                    chr++;
+                }
+
+            }
+            Console.WriteLine("Total words sea and fare in File are:" + chr);
+
+
+        }
         public int FindNumberOfBlankSpaces(string line)
         {
+
+
 
             int countletters = 0;
             int countSpaces = 0;
 
             foreach (char c in line)
             {
-                if (char.IsLetter(c)) { countletters++; }
+                if (char.IsLetter(c))
+                {
+                    countletters++;
+                }
 
-                if (char.IsWhiteSpace(c)) { countletters++; }
+                if (char.IsWhiteSpace(c))
+                {
+                    countletters++;
+                }
             }
             return countSpaces;
 
         }
+
+
+
+
+
 
     }
 
