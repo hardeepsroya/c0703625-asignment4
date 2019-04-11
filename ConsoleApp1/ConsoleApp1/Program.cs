@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.IO;
 
-namespace Assignment_4
+namespace c0703625
 {
     class Program
     {
@@ -17,6 +17,7 @@ namespace Assignment_4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.Run();
         }
 
         public void Run() { this.ReadTextFiles(); }
@@ -24,7 +25,7 @@ namespace Assignment_4
         public void ReadTextFiles()
         {
             //Read file using streamReader.
-            using (StreamReader file = new StreamReader("c:/arear/.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/703625/hardeep/Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -33,6 +34,7 @@ namespace Assignment_4
                 {
                     Console.WriteLine(ln);
                     Beowulf.Add(ln);
+                    counter++;
                 }
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
